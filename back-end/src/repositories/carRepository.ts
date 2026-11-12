@@ -9,14 +9,16 @@ export function findAll() {
     orderBy: {
       brand: "asc",
     },
+    include: {
+      customer: true,
+    },
   });
 }
 
 export function findById(id: number) {
   return prisma.car.findUnique({
     where: { id },
-    // Se quiser trazer também os dados do cliente dono do carro, descomente a linha abaixo:
-    // include: { customer: true }
+    include: { customer: true }
   });
 }
 
